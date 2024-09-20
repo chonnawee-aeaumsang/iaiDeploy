@@ -19,16 +19,12 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
-
     <script>
-      // Debug: Log when the page is loaded
-      console.log("Page loaded, initializing Unity WebGL...");
-
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.register("ServiceWorker.js?timestamp=" + new Date().getTime())
             .then(function() {
-              console.log("Service worker registered with timestamp for cache busting.");
+              console.log("Service worker registered with timestamp.");
             })
             .catch(function(error) {
               console.error("Service worker registration failed:", error);
@@ -61,15 +57,15 @@
       }
 
       var buildUrl = "Build";
-      var timestamp = new Date().getTime();  // Generate a unique timestamp
+      var timestamp = new Date().getTime();  // Generate unique timestamp for cache busting
 
       // Append the timestamp to each asset URL to force cache busting
-      var loaderUrl = buildUrl + "/iAIRobot.loader.js?timestamp=" + timestamp;
-      var dataUrl = buildUrl + "/iAIRobot.data?timestamp=" + timestamp;
-      var frameworkUrl = buildUrl + "/iAIRobot.framework.js?timestamp=" + timestamp;
-      var codeUrl = buildUrl + "/iAIRobot.wasm?timestamp=" + timestamp;
+      var loaderUrl = buildUrl + "/iAISwipe.loader.js?timestamp=" + timestamp;
+      var dataUrl = buildUrl + "/iAISwipe.data?timestamp=" + timestamp;
+      var frameworkUrl = buildUrl + "/iAISwipe.framework.js?timestamp=" + timestamp;
+      var codeUrl = buildUrl + "/iAISwipe.wasm?timestamp=" + timestamp;
 
-      // Debug: Log the URLs being requested with timestamp for cache busting
+      // Debug: Log the URLs being requested with timestamps
       console.log("Requesting loaderUrl:", loaderUrl);
       console.log("Requesting dataUrl:", dataUrl);
       console.log("Requesting frameworkUrl:", frameworkUrl);
